@@ -6,6 +6,7 @@ package lab3p2_alejandrareyes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -19,6 +20,7 @@ static boolean viviragua;
     public static void main(String[] args) {
         Scanner leer = new Scanner (System.in);
         Scanner leerS = new Scanner (System.in);
+        Random rand = new Random();
         ArrayList <Pokemon> pokemones = new ArrayList();
         ArrayList <Pokeball> pokebolas = new ArrayList();
         System.out.print("* * * * * M E N U * * * * *");
@@ -162,7 +164,7 @@ static boolean viviragua;
                             if (p instanceof FireType) {
                                 System.out.println();
                                 System.out.println("Fire-Type -->");
-                                System.out.println((pokemones.indexOf(p)+1) + ". " + p);
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
                             }
                         }
                         System.out.println();
@@ -184,18 +186,38 @@ static boolean viviragua;
                             
                         }
                         
-                        pokemones.remove(pos-1);
+                        pokemones.remove(pos);
                         
                         
                     }
                     else if (tipo2.equalsIgnoreCase("watertype")){
-                        for (Pokemon p : pokemones) {
+                       for (Pokemon p : pokemones) {
                             if (p instanceof WaterType) {
                                 System.out.println();
                                 System.out.println("Water-Type -->");
                                 System.out.println(pokemones.indexOf(p) + ". " + p);
                             }
                         }
+                        System.out.println();
+                        System.out.println("Posicion de pokemon a eliminar: ");
+                        int pos = leer.nextInt();
+                        
+                        while (pos<0 ||  pos>pokemones.size()-1){
+                            System.out.println("Posicion fuera de rango");
+                            for (Pokemon p : pokemones) {
+                                if (p instanceof WaterType) {
+                                    System.out.println();
+                                    System.out.println("Water-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                }
+                            }
+                            
+                            System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
+                            pos = leer.nextInt();
+                            
+                        }
+                        
+                        pokemones.remove(pos);
                     }
                     else if (tipo2.equalsIgnoreCase("grasstype")){
                         for (Pokemon p : pokemones) {
@@ -205,11 +227,85 @@ static boolean viviragua;
                                 System.out.println(pokemones.indexOf(p) + ". " + p);
                             }
                         }
+                        System.out.println();
+                        System.out.println("Posicion de pokemon a eliminar: ");
+                        int pos = leer.nextInt();
+                        
+                        while (pos<0 ||  pos>pokemones.size()-1){
+                            System.out.println("Posicion fuera de rango");
+                            for (Pokemon p : pokemones) {
+                                if (p instanceof GrassType) {
+                                    System.out.println();
+                                    System.out.println("Grass-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                }
+                            }
+                            System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
+                            pos = leer.nextInt();
+                            
+                        }
+                        
+                        pokemones.remove(pos);
                     }
                     
                     break;
 
                 case 5:
+                    System.out.println();
+                    System.out.println("* * * * * POKEBOLAS * * * * *");
+                    for (Pokeball p : pokebolas) {
+                        System.out.println(pokemones.indexOf(p) + ". " + p);
+                    }
+                    System.out.println("Ingrese posicion de pokebola: ");
+                    int pokeb = leer.nextInt();
+                    
+                    while (pokeb<0 ||  pokeb>pokebolas.size()-1){
+                            System.out.println("Posicion fuera de rango");
+                            System.out.print("Ingrese nuevamente la posicion de la pokebola a eliminar:");
+                            pokeb = leer.nextInt();
+                    }
+                    
+                    int limite = pokemones.size();
+                    int random = rand.nextInt(limite)+0;
+                    
+                    for (int i = 0; i < pokemones.size(); i++) {
+                        if (i == random) {
+                            for (Pokemon p : pokemones) {
+                                if (p instanceof FireType) {
+                                    if (pokemones.get(i).isAtrapado() == false) {
+                                        System.out.println("EL POKEMON " + pokemones.get(i).getNombre() + " HA APARECIDO");
+                                        System.out.println("Desea utilizar la pokebola para capturarlo? [s/n]: ");
+                                        String usar = leerS.nextLine();
+
+                                        if (usar.equalsIgnoreCase("s")) {
+                                            switch (pokebolas.get(i).getEficiencia()){
+                                                case 1:
+                                                    break;
+                                                    
+                                                case 2:
+                                                    break;
+                                                    
+                                                case 3:
+                                                    break;
+                                            }
+                                            
+
+                                        } else {
+                                            break;
+                                        }
+
+                                    } else {
+                                        random = rand.nextInt(limite) + 0;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                    
+                    
+                    
                     break;
 
                 case 6: 
