@@ -128,14 +128,17 @@ static boolean viviragua;
                     System.out.println("* * * * * POKEMONES * * * * *");
                     for (Pokemon p : pokemones) {
                         if (p instanceof FireType){
+                            System.out.println();
                             System.out.println("Fire-Type -->");
                             System.out.println(p);
                         }
                         else if (p instanceof WaterType){
+                            System.out.println();
                             System.out.println("Water-Type -->");
                             System.out.println(p);
                         }
                         else if (p instanceof GrassType){
+                            System.out.println();
                             System.out.println("Grass-Type -->");
                             System.out.println(p);
                         }
@@ -143,9 +146,70 @@ static boolean viviragua;
                     break;
 
                 case 4: 
+                    System.out.print("Tipo de pokemon a eliminar [firetype, watertype o grasstype]: ");
+                    String tipo2 = leerS.nextLine();
+                    
+                    String [] tipodispo2 = {"firetype", "watertype", "grasstype"};
+                    
+                    while (!(tipo2.equalsIgnoreCase(tipodispo2[0]) || tipo2.equalsIgnoreCase(tipodispo2[1]) || tipo2.equalsIgnoreCase(tipodispo2[2]))){
+                        System.out.print("El tipo debe ser [firetype, watertype o grasstype]");
+                        System.out.print("Ingrese el tipo nuevamente: ");
+                        tipo2 = leerS.nextLine();
+                    }
+                    
+                    if (tipo2.equalsIgnoreCase("firetype")){
+                        for (Pokemon p : pokemones) {
+                            if (p instanceof FireType) {
+                                System.out.println();
+                                System.out.println("Fire-Type -->");
+                                System.out.println((pokemones.indexOf(p)+1) + ". " + p);
+                            }
+                        }
+                        System.out.println();
+                        System.out.println("Posicion de pokemon a eliminar: ");
+                        int pos = leer.nextInt();
+                        
+                        while (pos<0 ||  pos>pokemones.size()-1){
+                            System.out.println("Posicion fuera de rango");
+                            for (Pokemon p : pokemones) {
+                                if (p instanceof FireType) {
+                                    System.out.println();
+                                    System.out.println("Fire-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                }
+                            }
+                            
+                            System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
+                            pos = leer.nextInt();
+                            
+                        }
+                        
+                        pokemones.remove(pos-1);
+                        
+                        
+                    }
+                    else if (tipo2.equalsIgnoreCase("watertype")){
+                        for (Pokemon p : pokemones) {
+                            if (p instanceof WaterType) {
+                                System.out.println();
+                                System.out.println("Water-Type -->");
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
+                            }
+                        }
+                    }
+                    else if (tipo2.equalsIgnoreCase("grasstype")){
+                        for (Pokemon p : pokemones) {
+                            if (p instanceof GrassType) {
+                                System.out.println();
+                                System.out.println("Grass-Type -->");
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
+                            }
+                        }
+                    }
+                    
                     break;
 
-                case 5: 
+                case 5:
                     break;
 
                 case 6: 
