@@ -10,14 +10,11 @@ package lab3p2_alejandrareyes;
  */
 public class FireType extends Pokemon{
     int potllamas;
-
-    public FireType() {
+    
+     public FireType(int potllamas, String nombre, String naturaleza, int numpokedex, boolean atrapado) {
+        super(nombre, naturaleza, numpokedex, atrapado);
+        this.potllamas = potllamas;
     }
-    
-    
-    
-    
-    
 
     public int getPotllamas() {
         return potllamas;
@@ -27,13 +24,55 @@ public class FireType extends Pokemon{
         this.potllamas = potllamas;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNaturaleza() {
+        return naturaleza;
+    }
+
+    public void setNaturaleza(String naturaleza) {
+        this.naturaleza = naturaleza;
+    }
+
+    public int getNumpokedex() {
+        return numpokedex;
+    }
+
+    public void setNumpokedex(int numpokedex) {
+        this.numpokedex = numpokedex;
+    }
+
+    public boolean isAtrapado() {
+        return atrapado;
+    }
+
+    public void setAtrapado(boolean atrapado) {
+        this.atrapado = atrapado;
+    }
+
+    public Pokeball getP() {
+        return p;
+    }
+
+    public void setP(Pokeball p) {
+        this.p = p;
+    }
+
     @Override
     public String toString() {
-        return "Type: fire-type | potencia de llamas: " + potllamas + '}';
+        return "Type: water-type | potencia de llamas: " + potllamas + '}';
     }
+     
     
+
     
-    
+
     
     
     
