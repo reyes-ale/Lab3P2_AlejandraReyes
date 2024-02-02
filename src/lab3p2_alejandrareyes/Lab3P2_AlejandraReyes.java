@@ -271,25 +271,37 @@ static boolean viviragua;
                     for (int i = 0; i < pokemones.size(); i++) {
                         if (i == random) {
                             for (Pokemon p : pokemones) {
-                                if (p instanceof FireType) {
+                                if (p instanceof FireType || p instanceof WaterType || p instanceof GrassType) {
                                     if (pokemones.get(i).isAtrapado() == false) {
                                         System.out.println("EL POKEMON " + pokemones.get(i).getNombre() + " HA APARECIDO");
-                                        System.out.println("Desea utilizar la pokebola para capturarlo? [s/n]: ");
+                                        System.out.print("Desea utilizar la pokebola para capturarlo? [s/n]: ");
                                         String usar = leerS.nextLine();
 
                                         if (usar.equalsIgnoreCase("s")) {
-                                            switch (pokebolas.get(i).getEficiencia()){
-                                                case 1:
+                                            double prob=0;
+                                            switch (rand.nextInt(3)+1){
+                                                case 3:
+                                                    prob = 3/3;
                                                     break;
                                                     
                                                 case 2:
+                                                    prob = 2/3;
                                                     break;
                                                     
-                                                case 3:
+                                                case 1:
+                                                    prob = 1/3;
                                                     break;
                                             }
+                                            if (prob<=pokebolas.get(i).getEficiencia()){
+                                                System.out.println("Haz capturado al pokemon!");
+                                                pokemones.get(i).setP(pokebolas.get(pokeb));
+                                                pokebolas.remove(pokeb);
+                                            }
+                                            else{
+                                                System.out.println("No se pudo atrapar el pokemon");
+                                                pokebolas.remove(pokeb);
+                                            }
                                             
-
                                         } else {
                                             break;
                                         }
