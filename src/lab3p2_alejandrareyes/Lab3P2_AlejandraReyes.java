@@ -20,6 +20,7 @@ static boolean viviragua;
         Scanner leer = new Scanner (System.in);
         Scanner leerS = new Scanner (System.in);
         ArrayList <Pokemon> pokemones = new ArrayList();
+        ArrayList <Pokeball> pokebolas = new ArrayList();
         System.out.print("* * * * * M E N U * * * * *");
         System.out.print("\n 1. Crear Pokemon \n 2. Crear Pokebola \n 3. Listar Pokemon "
                 + "\n 4. Eliminar Pokemon \n 5. Capturar Pokemon \n 6. Modificar Pokemon \n 7. Salir \n ");
@@ -82,7 +83,7 @@ static boolean viviragua;
                         int dom = leer.nextInt();
                         
                         while (dom<0 || dom>100){
-                            System.out.print("El dominio sobre plantas es de 1-100.");
+                            System.out.println("El dominio sobre plantas es de 0-100.");
                             System.out.print("Ingrese el dominio sobre plantas nuevamente: ");
                             dom = leer.nextInt();
                         }
@@ -92,13 +93,53 @@ static boolean viviragua;
                         
                     }
                     
-                    
                     break;
 
                 case 2:
+                    System.out.println("Color: ");
+                    String color = leerS.nextLine();
+                    System.out.println("Serie: ");
+                    int serie = leer.nextInt();
+                    
+                    for (int i = 0; i < pokebolas.size(); i++) {
+                        while (serie==pokebolas.get(i).getSerie()){
+                            System.out.println("Esta serie de pokebola ya existe.");
+                            System.out.print("Ingrese otra serie: ");
+                            serie = leer.nextInt();
+                        }
+                    }
+                    
+                    System.out.print("Eficiencia atrapando (1-3): ");
+                    int eficiencia = leer.nextInt();
+                    
+                    while (eficiencia<1 || eficiencia >3){
+                        System.out.println("La eficiencia debe ser del 1-3.");
+                        System.out.print("Ingrese eficiencia nuevamente: ");
+                        eficiencia = leer.nextInt();
+                    }
+                    
+                    pokebolas.add(new Pokeball(color, serie, eficiencia));
+                    System.out.println("Pokebola agregada exitosamente");
+                    
                     break;
 
                 case 3:
+                    System.out.println();
+                    System.out.println("* * * * * POKEMONES * * * * *");
+                    for (Pokemon p : pokemones) {
+                        if (p instanceof FireType){
+                            System.out.println("Fire-Type -->");
+                            System.out.println(p);
+                        }
+                        else if (p instanceof WaterType){
+                            System.out.println("Water-Type -->");
+                            System.out.println(p);
+                        }
+                        else if (p instanceof GrassType){
+                            System.out.println("Grass-Type -->");
+                            System.out.println(p);
+                        }
+                    }
                     break;
 
                 case 4: 
