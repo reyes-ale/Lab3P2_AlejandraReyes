@@ -135,38 +135,41 @@ static boolean viviragua;
                     for (Pokemon p : pokemones) {
                         if (p instanceof FireType){
                             if (cont == 1) {
-                                System.out.println();
-                                System.out.println("Fire-Type -->");
-                                cont=2;
-                                 System.out.println(p);
-                                
-                            }
-                            else{
-                                System.out.println(p);
-                            }
+                                            System.out.println();
+                                            System.out.println("Fire-Type -->");
+                                        }
+                                        System.out.println(p);
+
+                                        cont++;
+                                        cont2 = 1;
+                                        cont3 = 1;
                         }
                         
                         else if (p instanceof WaterType){
-                            if (cont2 == 1) {
-                                System.out.println();
-                                System.out.println("Water-Type -->");
-                                cont2=2;
-                            }
-                            else{
-                            System.out.println(p);
-                            }
+                            
+                                        if (cont2 == 1) {
+                                            System.out.println();
+                                            System.out.println("Water-Type -->");
+                                        }
+                                        System.out.println(p);
+
+                                        cont2++;
+                                        cont = 1;
+                                        cont3 = 1;
+                                    
+                                
                          
                         }
                         else if (p instanceof GrassType){
-                            if (cont3 == 1) {
-                                System.out.println();
-                                System.out.println("Grass-Type -->");
-                                cont3=2;
-                            }
-                            else{
-                                System.out.println(p);
-                            }
-                            
+                           if (cont3 == 1) {
+                                            System.out.println();
+                                            System.out.println("Water-Type -->");
+                                        }
+                                        System.out.println(p);
+
+                                        cont3++;
+                                        cont = 1;
+                                        cont2 = 1;
 
                         }
                     }
@@ -193,12 +196,13 @@ static boolean viviragua;
                                 if (cont == 1) {
                                     System.out.println();
                                     System.out.println("Fire-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                    cont=2;
+                                    
                                 }
+                                else{
                                 System.out.println(pokemones.indexOf(p) + ". " + p);
-
-                                cont++;
-                                cont2 = 1;
-                                cont3 = 1;
+                                }
                             }
                         }
                         System.out.println();
@@ -213,12 +217,13 @@ static boolean viviragua;
                                 if (cont == 1) {
                                     System.out.println();
                                     System.out.println("Fire-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                    cont=2;
                                 }
+                                else{
                                 System.out.println(pokemones.indexOf(p) + ". " + p);
+                                }
 
-                                cont++;
-                                cont2 = 1;
-                                cont3 = 1;
                             }
                         }
                             System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
@@ -234,12 +239,13 @@ static boolean viviragua;
                                 if (cont2 == 1) {
                                     System.out.println();
                                     System.out.println("Water-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                    cont2=2;
                                 }
+                                else{
                                 System.out.println(pokemones.indexOf(p) + ". " + p);
+                                }
 
-                                cont2++;
-                                cont = 1;
-                                cont3 = 1;
                             }
                         }
                         System.out.println();
@@ -254,14 +260,16 @@ static boolean viviragua;
                                 if (cont2 == 1) {
                                     System.out.println();
                                     System.out.println("Water-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                    cont2=2;
                                 }
+                                else{
                                 System.out.println(pokemones.indexOf(p) + ". " + p);
+                                }
 
-                                cont2++;
-                                cont = 1;
-                                cont3 = 1;
                             }
                         }
+                        
                             
                             System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
                             pos = leer.nextInt();
@@ -277,12 +285,13 @@ static boolean viviragua;
                                 if (cont3 == 1) {
                                     System.out.println();
                                     System.out.println("Grass-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                    cont3=2;
                                 }
+                                else{
                                 System.out.println(pokemones.indexOf(p) + ". " + p);
+                                }
 
-                                cont3++;
-                                cont2 = 1;
-                                cont = 1;
                             }
                         }
                         System.out.println();
@@ -292,24 +301,24 @@ static boolean viviragua;
                         int conti=1;
                         while (pos<0 ||  pos>pokemones.size()-1){
                             System.out.println("Posicion fuera de rango");
-                            for (Pokemon p : pokemones) {
+                             for (Pokemon p : pokemones) {
                             if (p instanceof GrassType) {
                                 if (cont3 == 1) {
                                     System.out.println();
                                     System.out.println("Grass-Type -->");
+                                    System.out.println(pokemones.indexOf(p) + ". " + p);
+                                    cont3=2;
                                 }
+                                else{
                                 System.out.println(pokemones.indexOf(p) + ". " + p);
+                                }
 
-                                cont3++;
-                                cont2 = 1;
-                                cont = 1;
                             }
                         }
                             
                             System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
                             pos = leer.nextInt();
                         }    
-                        
                         
                         pokemones.remove(pos);
                        
@@ -337,6 +346,7 @@ static boolean viviragua;
                     
                     int limite = pokemones.size();
                     int random = rand.nextInt(limite)+0;
+                    int pokequitar = -1;
                     
                     for (int i = 0; i < pokemones.size(); i++) {
                         if (i == random) {
@@ -366,10 +376,11 @@ static boolean viviragua;
                                                 System.out.println("Haz capturado al pokemon!");
                                                 pokemones.get(i).setP(pokebolas.get(pokeb));
                                                 pokemones.get(i).setAtrapado(true);
-                                                pokebolas.remove(pokeb);
+                                                pokequitar = pokeb;
                                             }
                                             else{
                                                 System.out.println("No se pudo atrapar el pokemon");
+                                                pokequitar = pokeb;
                                             }
                                             
                                         } else {
@@ -384,6 +395,9 @@ static boolean viviragua;
                            
 
                         }
+                    }
+                    if (pokequitar != -1) {
+                        pokebolas.remove(pokequitar);
                     }
                     break;
 
