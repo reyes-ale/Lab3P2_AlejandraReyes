@@ -415,7 +415,7 @@ static boolean viviragua;
                                 System.out.print("Ingrese el tipo nuevamente: ");
                                 tipo2 = leerS.nextLine();
                             }
-
+                            
                             if (tipo2.equalsIgnoreCase("firetype")) {
                                 for (Pokemon p : pokemones) {
                                     if (p instanceof FireType) {
@@ -453,6 +453,8 @@ static boolean viviragua;
                                     System.out.print("Ingrese nuevamente la posicion del pokemon a modificar:");
                                     pos = leer.nextInt();
                                 }
+                                
+                                if (pokemones.get(pos).isAtrapado()==true){
                                 System.out.println();
                                 System.out.print("* * * * * SUB MENU MODIFICAR * * * * * ");
                                 System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Potencia de llamas \n 4. Salir del sub menu");
@@ -485,6 +487,10 @@ static boolean viviragua;
                                 System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Puede vivir fuera del agua? \n 4. Salir del sub menu");
                                 System.out.print("Ingrese una opcion: ");
                                 op = leer.nextInt();
+                                }
+                                }
+                                else{
+                                    System.out.println("El pokemon no se puede modificar. No esta atrapado.");
                                 }
                                 
                             }//if fire
@@ -639,6 +645,9 @@ static boolean viviragua;
                             
 
                             }
+                        else {
+                            System.out.println("No ha atrapado ningun pokemon");
+                        }
                         }
                     
 
