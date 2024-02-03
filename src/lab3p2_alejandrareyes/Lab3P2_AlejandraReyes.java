@@ -138,20 +138,16 @@ static boolean viviragua;
                             if (cont == 1) {
                                 System.out.println();
                                 System.out.println("Fire-Type -->");
-                                System.out.println(p);
                             }
                             System.out.println(p);
 
                             cont++;
-                            cont2 = 1;
-                            cont3 = 1;
                         }
                         
                         else if (p instanceof WaterType){
                             if (cont2 == 1) {
                                 System.out.println();
                                 System.out.println("Water-Type -->");
-                                System.out.println(p);
                             }
                             System.out.println(p);
                             cont2++;
@@ -162,7 +158,6 @@ static boolean viviragua;
                             if (cont3 == 1) {
                                 System.out.println();
                                 System.out.println("Grass-Type -->");
-                                System.out.println(p);
                             }
                             System.out.println(p);
 
@@ -190,15 +185,17 @@ static boolean viviragua;
                     
                     if (tipo2.equalsIgnoreCase("firetype")){
                         for (Pokemon p : pokemones) {
-                             if (cont==1){
-                                System.out.println();
-                                System.out.println("Fire-Type -->");
-                                System.out.println(p);
+                            if (p instanceof FireType) {
+                                if (cont == 1) {
+                                    System.out.println();
+                                    System.out.println("Fire-Type -->");
+                                }
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                cont++;
+                                cont2 = 1;
+                                cont3 = 1;
                             }
-                            else {
-                                System.out.println(p);
-                            }
-                            cont++;
                         }
                         System.out.println();
                         System.out.println("Posicion de pokemon a eliminar: ");
@@ -207,20 +204,19 @@ static boolean viviragua;
                         int contx=1;
                         while (pos < 0 || pos > pokemones.size() - 1) {
                             System.out.println("Posicion fuera de rango");
-                            for (Pokemon p : pokemones) {
-                                if (p instanceof FireType) {
-                                    if (contx == 1) {
-                                        System.out.println();
-                                        System.out.println("Fire-Type -->");
-                                        System.out.println(pokemones.indexOf(p) + ". " + p);
-                                    } else {
-                                        System.out.println(pokemones.indexOf(p) + ". " + p);
-                                    }
-                                    contx++;
-
+                           for (Pokemon p : pokemones) {
+                            if (p instanceof FireType) {
+                                if (cont == 1) {
+                                    System.out.println();
+                                    System.out.println("Fire-Type -->");
                                 }
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
 
+                                cont++;
+                                cont2 = 1;
+                                cont3 = 1;
                             }
+                        }
                             System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
                             pos = leer.nextInt();
                         }
@@ -231,16 +227,17 @@ static boolean viviragua;
                     else if (tipo2.equalsIgnoreCase("watertype")){
                        for (Pokemon p : pokemones) {
                             if (p instanceof WaterType) {
-                               if (cont2 == 1) {
-                                   System.out.println();
-                                   System.out.println("Water-Type -->");
-                                   System.out.println(pokemones.indexOf(p) + ". " + p);
-                               } else {
-                                   System.out.println(pokemones.indexOf(p) + ". " + p);
-                               }
-                               cont2++;
+                                if (cont2 == 1) {
+                                    System.out.println();
+                                    System.out.println("Water-Type -->");
+                                }
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                cont2++;
+                                cont = 1;
+                                cont3 = 1;
                             }
-                       }
+                        }
                         System.out.println();
                         System.out.println("Posicion de pokemon a eliminar: ");
                         int pos = leer.nextInt();
@@ -248,18 +245,19 @@ static boolean viviragua;
                         int conty=1;
                         while (pos<0 ||  pos>pokemones.size()-1){
                             System.out.println("Posicion fuera de rango");
-                            for (Pokemon y : pokemones) {
-                                if (y instanceof WaterType) {
-                                    if (conty == 1) {
-                                        System.out.println();
-                                        System.out.println("Water-Type -->");
-                                        System.out.println(pokemones.indexOf(y) + ". " + y);
-                                    } else {
-                                        System.out.println(pokemones.indexOf(y) + ". " + y);
-                                    }
-                                    conty++;
+                            for (Pokemon p : pokemones) {
+                            if (p instanceof WaterType) {
+                                if (cont2 == 1) {
+                                    System.out.println();
+                                    System.out.println("Water-Type -->");
                                 }
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                cont2++;
+                                cont = 1;
+                                cont3 = 1;
                             }
+                        }
                             
                             System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
                             pos = leer.nextInt();
@@ -272,16 +270,17 @@ static boolean viviragua;
                     else if (tipo2.equalsIgnoreCase("grasstype")){
                         for (Pokemon p : pokemones) {
                             if (p instanceof GrassType) {
-                               if (cont3 == 1) {
-                                   System.out.println();
-                                   System.out.println("Grass-Type -->");
-                                   System.out.println(pokemones.indexOf(p) + ". " + p);
-                               } else {
-                                   System.out.println(pokemones.indexOf(p) + ". " + p);
-                               }
-                               cont3++;
+                                if (cont3 == 1) {
+                                    System.out.println();
+                                    System.out.println("Grass-Type -->");
+                                }
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                cont3++;
+                                cont2 = 1;
+                                cont = 1;
                             }
-                       }
+                        }
                         System.out.println();
                         System.out.println("Posicion de pokemon a eliminar: ");
                         int pos = leer.nextInt();
@@ -289,18 +288,19 @@ static boolean viviragua;
                         int conti=1;
                         while (pos<0 ||  pos>pokemones.size()-1){
                             System.out.println("Posicion fuera de rango");
-                            for (Pokemon y : pokemones) {
-                                if (y instanceof WaterType) {
-                                    if (conti == 1) {
-                                        System.out.println();
-                                        System.out.println("Grass-Type -->");
-                                        System.out.println(pokemones.indexOf(y) + ". " + y);
-                                    } else {
-                                        System.out.println(pokemones.indexOf(y) + ". " + y);
-                                    }
-                                    conti++;
+                            for (Pokemon p : pokemones) {
+                            if (p instanceof GrassType) {
+                                if (cont3 == 1) {
+                                    System.out.println();
+                                    System.out.println("Grass-Type -->");
                                 }
+                                System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                cont3++;
+                                cont2 = 1;
+                                cont = 1;
                             }
+                        }
                             
                             System.out.print("Ingrese nuevamente la posicion del pokemon a eliminar:");
                             pos = leer.nextInt();
@@ -355,7 +355,7 @@ static boolean viviragua;
                                                     prob = 1/3;
                                                     break;
                                             }
-                                            if (prob>=pokebolas.get(i).getEficiencia()){
+                                            if (prob<=pokebolas.get(i).getEficiencia()){
                                                 System.out.println("Haz capturado al pokemon!");
                                                 pokemones.get(i).setP(pokebolas.get(pokeb));
                                                 pokebolas.remove(pokeb);

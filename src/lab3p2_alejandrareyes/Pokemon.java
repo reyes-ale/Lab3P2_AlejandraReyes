@@ -67,7 +67,7 @@ public class Pokemon {
    
     @Override
     public String toString() {
-        return "Pokemon { " + "nombre: " + nombre + "| naturaleza: " + naturaleza + " | num.pokedex: " + numpokedex + "| atrapado? " + atrapado;
+        return "Pokemon { " + "nombre: " + nombre + " | naturaleza: " + naturaleza + " | num.pokedex: " + numpokedex + "| atrapado? " + atrapado;
     }
     
     
