@@ -53,7 +53,7 @@ static boolean viviragua;
                     String [] tipodispo = {"firetype", "watertype", "grasstype"};
                     
                     while (!(tipo.equalsIgnoreCase(tipodispo[0]) || tipo.equalsIgnoreCase(tipodispo[1]) || tipo.equalsIgnoreCase(tipodispo[2]))){
-                        System.out.print("El tipo debe ser [firetype, watertype o grasstype]");
+                        System.out.println("El tipo debe ser [firetype, watertype o grasstype]");
                         System.out.print("Ingrese el tipo nuevamente: ");
                         tipo = leerS.nextLine();
                     }
@@ -126,7 +126,6 @@ static boolean viviragua;
                     break;
 
                 case 3:
-                    boolean yaesta = false;
                     
                     System.out.println();
                     System.out.println("* * * * * POKEMONES * * * * *");
@@ -138,32 +137,37 @@ static boolean viviragua;
                             if (cont == 1) {
                                 System.out.println();
                                 System.out.println("Fire-Type -->");
+                                cont=2;
+                                 System.out.println(p);
+                                
                             }
-                            System.out.println(p);
-
-                            cont++;
+                            else{
+                                System.out.println(p);
+                            }
                         }
                         
                         else if (p instanceof WaterType){
                             if (cont2 == 1) {
                                 System.out.println();
                                 System.out.println("Water-Type -->");
+                                cont2=2;
                             }
+                            else{
                             System.out.println(p);
-                            cont2++;
-                            cont = 1;
-                            cont3 = 1;
+                            }
+                         
                         }
                         else if (p instanceof GrassType){
                             if (cont3 == 1) {
                                 System.out.println();
                                 System.out.println("Grass-Type -->");
+                                cont3=2;
                             }
-                            System.out.println(p);
+                            else{
+                                System.out.println(p);
+                            }
+                            
 
-                            cont3++;
-                            cont2 = 1;
-                            cont = 1;
                         }
                     }
                     break;
@@ -319,7 +323,7 @@ static boolean viviragua;
                     for (int i = 0; i < pokebolas.size(); i++) {
                         System.out.println(i + ". " + pokebolas.get(i));
                     }
-                    System.out.println("Ingrese posicion de pokebola: ");
+                    System.out.print("Ingrese posicion de pokebola a utilizar: ");
                     int pokeb = leer.nextInt();
                     
                     while (pokeb<0 ||  pokeb>pokebolas.size()-1){
@@ -358,7 +362,7 @@ static boolean viviragua;
                                                     prob = 1/3;
                                                     break;
                                             }
-                                            if (prob<=pokebolas.get(i).getEficiencia()){
+                                            if (prob<=pokebolas.get(pokeb).getEficiencia()){
                                                 System.out.println("Haz capturado al pokemon!");
                                                 pokemones.get(i).setP(pokebolas.get(pokeb));
                                                 pokemones.get(i).setAtrapado(true);
@@ -366,7 +370,6 @@ static boolean viviragua;
                                             }
                                             else{
                                                 System.out.println("No se pudo atrapar el pokemon");
-                                                pokebolas.remove(pokeb);
                                             }
                                             
                                         } else {
@@ -378,13 +381,10 @@ static boolean viviragua;
                                     }
                                 }
                             }
+                           
 
                         }
                     }
-
-                    
-                    
-                    
                     break;
 
                 case 6: 
@@ -468,12 +468,160 @@ static boolean viviragua;
                                     }
                                         
                                     System.out.print("* * * * * SUB MENU MODIFICAR * * * * * ");
-                                System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Potencia de llamas \n 4. Salir del sub menu");
-                                System.out.print("Ingrese una opcion");
+                                System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Puede vivir fuera del agua? \n 4. Salir del sub menu");
+                                System.out.print("Ingrese una opcion: ");
                                 op = leer.nextInt();
                                 }
                                 
                             }//if fire
+                            else if (tipo2.equalsIgnoreCase("watertype")){
+                                for (Pokemon p : pokemones) {
+                                    if (p instanceof WaterType) {
+                                        if (cont == 1) {
+                                            System.out.println();
+                                            System.out.println("Water-Type -->");
+                                        }
+                                        System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                        cont++;
+                                        cont2 = 1;
+                                        cont3 = 1;
+                                    }
+                                }
+                                System.out.println();
+                                System.out.println("Posicion de pokemon a modificar: ");
+                                int pos = leer.nextInt();
+
+                                int contx = 1;
+                                while (pos < 0 || pos > pokemones.size() - 1) {
+                                    System.out.println("Posicion fuera de rango");
+                                    for (Pokemon p : pokemones) {
+                                        if (p instanceof WaterType) {
+                                            if (contx == 1) {
+                                                System.out.println();
+                                                System.out.println("Water-Type -->");
+                                            }
+                                            System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                            contx++;
+                                            cont2 = 1;
+                                            cont3 = 1;
+                                        }
+                                    }
+                                    System.out.print("Ingrese nuevamente la posicion del pokemon a modificar:");
+                                    pos = leer.nextInt();
+                                }
+                                System.out.println();
+                                System.out.print("* * * * * SUB MENU MODIFICAR * * * * * ");
+                                System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Puede vivir fuera del agua? \n 4. Salir del sub menu");
+                                System.out.print("Ingrese una opcion");
+                                op = leer.nextInt();
+                                
+                                while (op!=4){
+                                    switch (op) {
+                                    case 1:
+                                        System.out.print("Nombre: ");
+                                        nombre = leerS.nextLine();
+                                        pokemones.get(pos).setNombre(nombre);
+                                        break;
+                                        
+                                    case 2:
+                                        System.out.print("Numero pokedex: ");
+                                        numpokedex = leer.nextInt();
+                                        pokemones.get(pos).setNumpokedex(numpokedex);
+                                        break;
+                                        
+                                    case 3:
+                                        System.out.print("Puede vivir en agua? [s/n]: ");
+                                        String op2 = leerS.nextLine();
+                                        if (op2.equalsIgnoreCase("s")) {
+                                            viviragua = true;
+                                        } else {
+                                            viviragua = false;
+                                        }
+                                        ((WaterType)pokemones.get(pos)).setViviragua(viviragua);
+                                        break;
+                                        
+                                    }
+                                        
+                                    System.out.print("* * * * * SUB MENU MODIFICAR * * * * * ");
+                                System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Potencia de llamas \n 4. Salir del sub menu");
+                                System.out.print("Ingrese una opcion: ");
+                                op = leer.nextInt();
+                                }
+                            }
+                            else if (tipo2.equalsIgnoreCase("grasstype")){
+                                for (Pokemon p : pokemones) {
+                                    if (p instanceof GrassType) {
+                                        if (cont == 1) {
+                                            System.out.println();
+                                            System.out.println("Grass-Type -->");
+                                        }
+                                        System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                        cont++;
+                                        cont2 = 1;
+                                        cont3 = 1;
+                                    }
+                                }
+                                System.out.println();
+                                System.out.println("Posicion de pokemon a modificar: ");
+                                int pos = leer.nextInt();
+
+                                int contx = 1;
+                                while (pos < 0 || pos > pokemones.size() - 1) {
+                                    System.out.println("Posicion fuera de rango");
+                                    for (Pokemon p : pokemones) {
+                                        if (p instanceof GrassType) {
+                                            if (contx == 1) {
+                                                System.out.println();
+                                                System.out.println("Grass-Type -->");
+                                            }
+                                            System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                            contx++;
+                                            cont2 = 1;
+                                            cont3 = 1;
+                                        }
+                                    }
+                                    System.out.print("Ingrese nuevamente la posicion del pokemon a modificar:");
+                                    pos = leer.nextInt();
+                                }
+                                System.out.println();
+                                System.out.print("* * * * * SUB MENU MODIFICAR * * * * * ");
+                                System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Habitat \n 4. Salir del sub menu");
+                                System.out.print("Ingrese una opcion");
+                                op = leer.nextInt();
+                                
+                                while (op!=4){
+                                    switch (op) {
+                                    case 1:
+                                        System.out.print("Nombre: ");
+                                        nombre = leerS.nextLine();
+                                        pokemones.get(pos).setNombre(nombre);
+                                        break;
+                                        
+                                    case 2:
+                                        System.out.print("Numero pokedex: ");
+                                        numpokedex = leer.nextInt();
+                                        pokemones.get(pos).setNumpokedex(numpokedex);
+                                        break;
+                                        
+                                    case 3:
+                                         System.out.print("Habitat: ");
+                                        String habitat = leerS.nextLine();
+                                        ((GrassType)pokemones.get(pos)).setHabitat(habitat);
+                                        break;
+                                        
+                                    }
+                                        
+                                    System.out.print("* * * * * SUB MENU MODIFICAR * * * * * ");
+                                System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Habitat \n 4. Salir del sub menu");
+                                System.out.print("Ingrese una opcion: ");
+                                op = leer.nextInt();
+                                }
+                            }
+                                    
                             
 
                             }
