@@ -316,15 +316,18 @@ static boolean viviragua;
                 case 5:
                     System.out.println();
                     System.out.println("* * * * * POKEBOLAS * * * * *");
-                    for (Pokeball p : pokebolas) {
-                        System.out.println(pokemones.indexOf(p) + ". " + p);
+                    for (int i = 0; i < pokebolas.size(); i++) {
+                        System.out.println(i + ". " + pokebolas.get(i));
                     }
                     System.out.println("Ingrese posicion de pokebola: ");
                     int pokeb = leer.nextInt();
                     
                     while (pokeb<0 ||  pokeb>pokebolas.size()-1){
+                        for (int i = 0; i < pokebolas.size(); i++) {
+                            System.out.println(i + ". " + pokebolas.get(i));
+                        }
                             System.out.println("Posicion fuera de rango");
-                            System.out.print("Ingrese nuevamente la posicion de la pokebola a eliminar:");
+                            System.out.print("Ingrese nuevamente la posicion de la pokebola:");
                             pokeb = leer.nextInt();
                     }
                     
@@ -358,6 +361,7 @@ static boolean viviragua;
                                             if (prob<=pokebolas.get(i).getEficiencia()){
                                                 System.out.println("Haz capturado al pokemon!");
                                                 pokemones.get(i).setP(pokebolas.get(pokeb));
+                                                pokemones.get(i).setAtrapado(true);
                                                 pokebolas.remove(pokeb);
                                             }
                                             else{
@@ -384,6 +388,102 @@ static boolean viviragua;
                     break;
 
                 case 6: 
+                    cont=1;
+                    for (int i = 0; i < pokemones.size(); i++) {
+                        if (pokemones.get(i).isAtrapado() == true) {
+                            System.out.print("Tipo de pokemon a modificar [firetype, watertype o grasstype]: ");
+                            tipo2 = leerS.nextLine();
+
+                            String[] tipodispo3 = {"firetype", "watertype", "grasstype"};
+
+                            while (!(tipo2.equalsIgnoreCase(tipodispo3[0]) || tipo2.equalsIgnoreCase(tipodispo3[1]) || tipo2.equalsIgnoreCase(tipodispo3[2]))) {
+                                System.out.print("El tipo debe ser [firetype, watertype o grasstype]");
+                                System.out.print("Ingrese el tipo nuevamente: ");
+                                tipo2 = leerS.nextLine();
+                            }
+
+                            if (tipo2.equalsIgnoreCase("firetype")) {
+                                for (Pokemon p : pokemones) {
+                                    if (p instanceof FireType) {
+                                        if (cont == 1) {
+                                            System.out.println();
+                                            System.out.println("Fire-Type -->");
+                                        }
+                                        System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                        cont++;
+                                        cont2 = 1;
+                                        cont3 = 1;
+                                    }
+                                }
+                                System.out.println();
+                                System.out.println("Posicion de pokemon a modificar: ");
+                                int pos = leer.nextInt();
+
+                                int contx = 1;
+                                while (pos < 0 || pos > pokemones.size() - 1) {
+                                    System.out.println("Posicion fuera de rango");
+                                    for (Pokemon p : pokemones) {
+                                        if (p instanceof FireType) {
+                                            if (contx == 1) {
+                                                System.out.println();
+                                                System.out.println("Fire-Type -->");
+                                            }
+                                            System.out.println(pokemones.indexOf(p) + ". " + p);
+
+                                            contx++;
+                                            cont2 = 1;
+                                            cont3 = 1;
+                                        }
+                                    }
+                                    System.out.print("Ingrese nuevamente la posicion del pokemon a modificar:");
+                                    pos = leer.nextInt();
+                                }
+                                System.out.println();
+                                System.out.print("* * * * * SUB MENU MODIFICAR * * * * * ");
+                                System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Potencia de llamas \n 4. Salir del sub menu");
+                                System.out.print("Ingrese una opcion");
+                                op = leer.nextInt();
+                                
+                                while (op!=4){
+                                    switch (op) {
+                                    case 1:
+                                        System.out.print("Nombre: ");
+                                        nombre = leerS.nextLine();
+                                        pokemones.get(pos).setNombre(nombre);
+                                        break;
+                                        
+                                    case 2:
+                                        System.out.print("Numero pokedex: ");
+                                        numpokedex = leer.nextInt();
+                                        pokemones.get(pos).setNumpokedex(numpokedex);
+                                        break;
+                                        
+                                    case 3:
+                                        System.out.print("Potencia de llamas: ");
+                                        int potencia = leer.nextInt();
+                                        ((FireType)pokemones.get(pos)).setPotllamas(potencia);
+                                        break;
+                                        
+                                    }
+                                        
+                                    System.out.print("* * * * * SUB MENU MODIFICAR * * * * * ");
+                                System.out.print("\n 1. Nombre \n 2. Numero pokedex \n 3. Potencia de llamas \n 4. Salir del sub menu");
+                                System.out.print("Ingrese una opcion");
+                                op = leer.nextInt();
+                                }
+                                
+                            }//if fire
+                            
+
+                            }
+                        }
+                    
+
+            
+
+                    
+                    
                     break;
 
 
