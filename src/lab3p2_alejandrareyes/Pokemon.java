@@ -56,9 +56,18 @@ public class Pokemon {
         this.atrapado = atrapado;
     }
 
+    public Pokeball getP() {
+        return p;
+    }
+
+    public void setP(Pokeball p) {
+        this.p = p;
+    }
+    
+   
     @Override
     public String toString() {
-        return "Pokemon{" + "nombre=" + nombre + ", naturaleza=" + naturaleza + ", numpokedex=" + numpokedex + ", atrapado=" + atrapado + '}';
+        return "Pokemon { " + "nombre: " + nombre + "| naturaleza: " + naturaleza + " | num.pokedex: " + numpokedex + "| atrapado? " + atrapado;
     }
     
     

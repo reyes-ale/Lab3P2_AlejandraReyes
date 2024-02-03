@@ -98,9 +98,9 @@ static boolean viviragua;
                     break;
 
                 case 2:
-                    System.out.println("Color: ");
+                    System.out.print("Color: ");
                     String color = leerS.nextLine();
-                    System.out.println("Serie: ");
+                    System.out.print("Serie: ");
                     int serie = leer.nextInt();
                     
                     for (int i = 0; i < pokebolas.size(); i++) {
@@ -126,23 +126,45 @@ static boolean viviragua;
                     break;
 
                 case 3:
+                    boolean yaesta = false;
+                    int cont =1;
+                    int cont2 =1;
+                    int cont3 =1;
                     System.out.println();
                     System.out.println("* * * * * POKEMONES * * * * *");
                     for (Pokemon p : pokemones) {
                         if (p instanceof FireType){
-                            System.out.println();
-                            System.out.println("Fire-Type -->");
-                            System.out.println(p);
+                            if (cont==1){
+                                System.out.println();
+                                System.out.println("Fire-Type -->");
+                                System.out.println(p);
+                            }
+                            else {
+                                System.out.println(p);
+                            }
+                            cont++;
                         }
                         else if (p instanceof WaterType){
-                            System.out.println();
-                            System.out.println("Water-Type -->");
-                            System.out.println(p);
+                            if (cont2==1){
+                                System.out.println();
+                                System.out.println("Water-Type -->");
+                                System.out.println(p);
+                            }
+                            else {
+                                System.out.println(p);
+                            }
+                            cont++;
                         }
                         else if (p instanceof GrassType){
-                            System.out.println();
-                            System.out.println("Grass-Type -->");
-                            System.out.println(p);
+                            if (cont3==1){
+                                System.out.println();
+                                System.out.println("Grass-Type -->");
+                                System.out.println(p);
+                            }
+                            else {
+                                System.out.println(p);
+                            }
+                            cont++;
                         }
                     }
                     break;
